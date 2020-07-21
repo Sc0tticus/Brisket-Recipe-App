@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import FoodList from './FoodList';
 import Favorites from './Favorites'
 
-// const charactersURL = 'https://rickandmortyapi.com/api/character/'
+const recipesURL = 'http://localhost:3005/recipes'
 
 class App extends Component {
 
@@ -13,27 +13,31 @@ class App extends Component {
     favorites: []
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getRecipes()
   }
 
   getRecipes = () => {
-    console.log("howdy")
+    fetch(recipesURL)
+      .then(result => result.json())
+      .then(response => this.setState({ recipes: response }))
   }
 
-  addToFavorites = (character) => {
+
+  addToFavorites = (recipe) => {
     this.setState({
-      favorites: [...this.state.favorites, character]
+      favorites: [...this.state.favorites, recipe]
     })
   }
 
-  render(){
-  return (
-    <div className="App">
-      <Favorites favorites={this.state.favorites} />
-      <RecipesList addToFavorites={this.addToFavorites} recipes={this.state.recipes} />
-      <h2>recipes</h2>
-    </div>
+  render() {
+    return (
+      <div className="App">
+        <Favorites favorites={this.state.favorites} />
+        {/* <RecipesList addToFavorites={this.addToFavorites} recipes={this.state.recipes} /> */}
+        <FoodList recipes={this.state.recipes} addToFavorites={this.addToFavorites} />
+        <h2>recipes</h2>
+      </div>
     );
   }
 }

@@ -1,11 +1,10 @@
 import React from 'react'
 
 export default function Favorites({favorites}){
-
   const showRecipes = () => favorites.map(recipe => (
       <li>
-        <h2>character.name</h2>
-        {/* <img src={character.image} /> */}
+        <h2>{recipe.title}</h2>
+        <img src={recipe.image} />
       </li>
   ))
 

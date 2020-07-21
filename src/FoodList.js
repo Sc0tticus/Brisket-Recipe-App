@@ -1,21 +1,19 @@
 import React from 'react';
 
- function FoodList(){
+function FoodList({recipes, addToFavorites}){
+    const showRecipes = () => recipes.map(
+      recipe => (
+        <li>
+        <h2>{recipe.title}</h2>
+        <img src={recipe.image} onClick={() => addToFavorites(recipe)}/>
+        </li>
+    ))
 
-  // const showRecipes = () => recipes.map(
-  //   recipe => (
-  //     <li>
-  //     <h2>recipe.name</h2>
-  //       {/* <h2>{recipe.name}</h2>
-  //       <img src={recipe.image} onClick={() => addToFavorites(recipe)}/> */}
-  //     </li>
-  // ))
-
-  return (
-      <ul className="recipe-list">
-          {/* {showRecipes()} */}
-      </ul>
-  )
+    return (
+        <ul className="recipe-list">
+            {showRecipes()}
+        </ul>
+    )
 }
 
 export default FoodList
