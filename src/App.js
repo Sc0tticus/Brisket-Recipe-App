@@ -9,7 +9,6 @@ const recipesURL = 'http://localhost:3005/recipes'
 
 class App extends Component {
 
-
   state = {
     recipes: [],
     favorites: []
@@ -34,12 +33,12 @@ class App extends Component {
 
   render() {
     return (
-
       <div className="App">
         {/* <Helmet>
         <title>{TITLE}</title>
         </Helmet> */}
-
+        <h1>Risk it for the Brisket!</h1>
+        <h2>Find your favorite BBQ recipe</h2>
         <Favorites favorites={this.state.favorites} />
         <FoodList recipes={this.state.recipes} addToFavorites={this.addToFavorites} />
       </div>
