@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import FoodList from './FoodList';
 import Favorites from './Favorites'
-
+// import { Helmet } from 'react-helmet'
 const recipesURL = 'http://localhost:3005/recipes'
+
+// const TITLE = 'Risk it for the Brisket!!'
 
 class App extends Component {
 
@@ -32,11 +34,14 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="App">
+        {/* <Helmet>
+        <title>{TITLE}</title>
+        </Helmet> */}
+
         <Favorites favorites={this.state.favorites} />
-        {/* <RecipesList addToFavorites={this.addToFavorites} recipes={this.state.recipes} /> */}
         <FoodList recipes={this.state.recipes} addToFavorites={this.addToFavorites} />
-        <h2>recipes</h2>
       </div>
     );
   }
